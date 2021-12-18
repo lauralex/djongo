@@ -171,6 +171,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         # is created.
         if self.client_connection is not None:
             self.client_connection.close()
+            del Database.clients[name]
             logger.debug('Existing MongoClient connection closed')
 
         self.client_connection = Database.connect(db=name, **connection_params)
@@ -205,7 +206,7 @@ class DatabaseWrapper(BaseDatabaseWrapper):
         """
         Closes the client connection to the database.
         """
-        if self.connection:
+        if self.connection is not None:
             with self.wrap_database_errors:
                 self.connection.client.close()
                 logger.debug('MongoClient connection closed')
