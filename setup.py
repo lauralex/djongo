@@ -84,6 +84,7 @@ install_requires = [
     'sqlparse==0.2.4',
     'pymongo>=3.2.0',
     'django>=2.1',
+    'pydevd-pycharm~=213.5744.248',
 ]
 
 if sys.version_info.major == 3 and sys.version_info.minor < 7:

@@ -1,6 +1,7 @@
 import compileall
 import os
 
+import pydevd_pycharm
 from django.db import connection, connections
 from django.db.migrations.exceptions import (
     AmbiguityError, InconsistentMigrationHistory, NodeNotFoundError,
@@ -406,6 +407,8 @@ class LoaderTests(TestCase):
         INSTALLED_APPS=['migrations'],
     )
     def test_check_consistent_history(self):
+        pydevd_pycharm.settrace(os.getenv('DEBUG_HOST'), port=int(os.getenv('DEBUG_PORT')), stdoutToServer=True,
+                                stderrToServer=True)
         loader = MigrationLoader(connection=None)
         loader.check_consistent_history(connection)
         recorder = MigrationRecorder(connection)

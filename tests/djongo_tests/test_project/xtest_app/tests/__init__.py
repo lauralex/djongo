@@ -28,6 +28,7 @@ class TestCase(DjangoTestCase):
     def tearDownClass(cls):
         cls.client.close()
 
+
     def assertEqual(self,
                     first: Any,
                     second: Any,

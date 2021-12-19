@@ -5,8 +5,10 @@ import os
 import sys
 from itertools import chain
 # from typing import Literal
+import pydevd_pycharm
 
 from test_utils import setup_tests
+
 
 ROOT_DIR = os.path.dirname(os.path.realpath(__file__))
 UTILS_DIR = os.path.join(ROOT_DIR, 'test_utils',)
@@ -210,5 +212,6 @@ class TestManager:
 
 
 if __name__ == '__main__':
+
     tm = TestManager()
     exit(tm.run())
